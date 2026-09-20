@@ -1,7 +1,7 @@
 # CV-DE-Stutter
 
 **The first German dysfluency corpus with word-level, multi-type, verbatim IPA annotation**, along with the full pipeline used to build it.
-This repository accompanies an ICASSP submission currently under double-blind review. It contains:
+This repository accompanies an ICASSP submission currently under review. It contains:
 - The **CV-DE-Stutter** dataset (dysfluent IPA transcripts + scripts for synthesized speech)
 - Code to reproduce the full pipeline from raw Common Voice audio to trained ASR models
 - Configs, tokenizers, and evaluation scripts for the IPA-based ASR models
@@ -62,6 +62,5 @@ Build IPA tokenizers, finetune two OmniASR variants (fluent-only vs. fluent + st
 
 ## Status
 
-This repository is released for anonymous peer review. Citation details, author information, and license will be added upon acceptance / de-anonymization.
-
+This repository is released for peer review.
 A demo page with synthetic stuttered speech samples, along with the VITS-CV-DE model checkpoint, will be released on Hugging Face after acceptance.
