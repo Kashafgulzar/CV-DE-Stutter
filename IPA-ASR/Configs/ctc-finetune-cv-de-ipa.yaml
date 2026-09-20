@@ -1,0 +1,46 @@
+# ctc-finetune-cv-de-ipa.yaml
+# Fine-tune omniASR_CTC_300M_v2 on the fluent CV-German IPA manifest.
+# Run with: python -m workflows.recipes.wav2vec2.asr $OUTPUT_DIR --config-file ctc-finetune-cv-de-ipa.yaml
+
+model:
+  name: "omniASR_CTC_300M_v2"
+
+dataset:
+  name: "cv_de_ipa_manifest_fluent"
+  train_split: "train"
+  valid_split: "eval"          
+  storage_mode: "MANIFEST"     
+                      
+  task_mode: "ASR"
+  manifest_storage_config:
+    read_text: true
+  asr_task_config:
+    min_audio_len: 32_000        # 2s at 16kHz - drops anything shorter
+    max_audio_len: 960_000       # 60s at 16kHz
+    max_num_elements: 2_080_000  # Yields ~16 to 20 clips per GPU batch pass of 6.5 seconds 
+    batch_shuffle_window: 1
+    normalize_audio: true
+    example_shuffle_window: 1
+
+tokenizer:
+  name: "cv_de_ipa_fluent_tokenizer"
+
+optimizer:
+  config:
+    lr: 1e-05                    
+
+trainer:
+  freeze_encoder_for_n_steps: 4216   # Freeze encoder for 1 full epoch to stabilize CTC head
+
+  mixed_precision:
+    dtype: "torch.bfloat16"
+  grad_accumulation:
+    num_batches: 4                   # 1 physical pass = 16 effective batch step (size ~64)
+
+regime:
+  num_steps: 84_320                 # 20 epochs with effective batch size 64 samples/eff.batchsize * 20
+  validate_after_n_steps: 4200     # First validation once encoder unfreezes
+  validate_every_n_steps: 4200      # Validates exactly 20 times (once per epoch)
+  checkpoint_every_n_steps: 8400      # Saves EXACTLY 10 checkpoints (1 per 2 epoch)
+                                      # land under $OUTPUT_DIR/checkpoints/step_N/
+  publish_metrics_every_n_steps: 200  # training loss / eval metrics logged at this cadence

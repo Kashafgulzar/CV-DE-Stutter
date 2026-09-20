@@ -1,0 +1,16 @@
+# Place these in your omnilingual-asr checkout:
+#   src/omnilingual_asr/cards/tokenizers/cv_de_ipa_tokenizer.yaml   (first doc below)
+#   src/omnilingual_asr/cards/datasets/cv_de_ipa_fluent/cv_de_ipa_fluent_dysfluent.yaml (second doc below)
+#
+# Fill in the two absolute paths marked <FILL IN> before use.
+# Fluent or Fluent + Dysfluent
+
+name: cv_de_ipa_tokenizer 
+tokenizer_family: char_tokenizer
+tokenizer: <FILL IN>/ipa_tokenizer.model
+---
+name: cv_de_ipa_manifest 
+dataset_family: manifest_asr_dataset
+dataset_config:
+  data: <FILL IN>/data
+tokenizer_ref: cv_de_ipa_tokenizer

@@ -1,0 +1,13 @@
+# finetuned_model_card.yaml
+# Register your trained checkpoint after training completes so it's loadable by
+# name via ASRInferencePipeline / fairseq2's load_model, same as the stock cards.
+# Place under: src/omnilingual_asr/cards/models/cv_de_ipa_finetuned_ctc.yaml
+#
+# Fill in <FILL IN> paths - point `checkpoint` at whichever step's checkpoint you
+# want (pick the one with the best validation PER from your training logs).
+
+name: cv_de_ipa_finetuned_ctc
+model_family: wav2vec2_asr
+model_arch: 300m_v2
+checkpoint: <FILL IN>/model/pp_00/tp_00/sdp_00.pt
+tokenizer_ref: cv_de_ipa_tokenizer
