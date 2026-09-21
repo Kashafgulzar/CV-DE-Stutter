@@ -1,4 +1,5 @@
 # CV-DE-Stutter
+[![Demo Online](https://img.shields.io/badge/Demo-Online-brightgreen?style=for-the-badge)](https://kashafgulzar.github.io/CV-DE-Stutter/)
 
 **The first German dysfluency corpus with word-level, multi-type, verbatim IPA annotation**, along with the full pipeline used to build it.
 This repository accompanies an ICASSP submission currently under review. It contains:
@@ -63,4 +64,4 @@ Build IPA tokenizers, finetune two OmniASR variants (fluent-only vs. fluent + st
 ## Status
 
 This repository is released for peer review.
-A demo page with synthetic stuttered speech samples, along with the VITS-CV-DE model checkpoint, will be released on Hugging Face after acceptance.
+The VITS-CV-DE model checkpoint, will be released on Hugging Face after acceptance.
