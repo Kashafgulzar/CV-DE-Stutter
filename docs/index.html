@@ -26,63 +26,72 @@
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:760px; margin:0 auto; padding:64px 24px 96px;}
+  .wrap{max-width:760px; margin:0 auto; padding:72px 24px 96px;}
 
-  header{margin-bottom:56px;}
+  header{margin-bottom:52px;}
   .kicker{
     font-family:'IBM Plex Mono', monospace;
-    font-size:13px;
+    font-size:12.5px;
+    letter-spacing:0.04em;
     color:var(--ink-soft);
-    margin:0 0 10px;
+    margin:0 0 14px;
   }
   h1{
     font-family:'Fraunces', serif;
     font-weight:600;
-    font-size:clamp(32px, 5vw, 44px);
+    font-size:clamp(30px, 4.6vw, 42px);
     letter-spacing:-0.01em;
+    line-height:1.15;
     margin:0 0 16px;
   }
+  .rule{
+    width:44px;
+    height:3px;
+    background:var(--accent);
+    border:none;
+    margin:0 0 20px;
+  }
   .dek{
-    font-size:17px;
+    font-size:16px;
     color:var(--ink-soft);
-    max-width:60ch;
-    margin:0 0 24px;
-  }
-  .links{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px 18px;
-    font-size:14px;
-    padding-top:20px;
-    border-top:1px solid var(--line);
-  }
-  .links a{color:var(--accent); text-decoration:none;}
-  .links a:hover{text-decoration:underline;}
-  .links span.sep{color:var(--line);}
-
-  .notice{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12.5px;
-    color:var(--ink-soft);
-    background:var(--accent-soft);
-    border:1px solid var(--line);
-    padding:10px 14px;
-    border-radius:4px;
-    margin-top:20px;
+    max-width:58ch;
+    margin:0;
   }
 
   section.type{
-    padding:36px 0;
+    padding:40px 0;
     border-top:1px solid var(--line);
   }
   section.type:first-of-type{border-top:1px solid var(--line);}
 
-  .type h2{
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    font-size:22px;
-    margin:0 0 6px;
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    letter-spacing:0.03em;
+    margin:0 0 10px;
   }
+
+  .tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:0 0 14px;
+  }
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    border-radius:999px;
+    padding:4px 11px;
+    line-height:1;
+  }
+  .tag.word-rep{color:#8A6D06; background:#FBF0C7;}
+  .tag.sound-rep{color:#B23A2E; background:#FBE4E0;}
+  .tag.interjection{color:#B15C12; background:#FBEBDA;}
+  .tag.intraword{color:#B23A73; background:#FCE4EE;}
+  .tag.silent-block{color:#6E4BB2; background:#EDE5FA;}
+  .tag.prolongation{color:#2E7D4F; background:#E1F3E7;}
+
   .type p.desc{
     font-size:15px;
     color:var(--ink-soft);
@@ -95,49 +104,37 @@
     font-size:14px;
     background:#FFFFFF;
     border:1px solid var(--line);
-    border-radius:4px;
-    padding:10px 16px;
-    margin-bottom:16px;
+    border-radius:6px;
+    padding:6px 16px;
+    margin-bottom:22px;
   }
   .t-row{
     display:flex;
     gap:14px;
     align-items:baseline;
-    padding:6px 0;
+    padding:9px 0;
     overflow-x:auto;
     white-space:nowrap;
   }
   .t-row + .t-row{border-top:1px solid var(--line);}
   .t-label{
-    flex:0 0 100px;
+    flex:0 0 96px;
     font-family:'IBM Plex Sans', sans-serif;
     font-size:12px;
     color:var(--ink-soft);
   }
   .t-text{flex:1;}
-  .transcript mark.mark-a{
-    background:var(--accent-soft);
-    color:var(--accent);
+  .t-row.ref .t-text{font-family:'IBM Plex Sans', sans-serif; font-size:14.5px;}
+  .transcript mark{
     border-radius:2px;
     padding:0 2px;
   }
-  .transcript mark.mark-b{
-    background:none;
-    color:var(--ink);
-    border-bottom:2px dotted var(--accent);
-    padding:0 1px;
-  }
-  .legend{
-    font-family:'IBM Plex Sans', sans-serif;
-    font-size:12.5px;
-    color:var(--ink-soft);
-    display:flex;
-    gap:22px;
-    margin:-4px 0 28px;
-  }
-  .legend span{display:inline-flex; align-items:center; gap:7px;}
-  .legend .sw-a{background:var(--accent-soft); border-radius:2px; padding:0 6px; color:var(--accent); font-family:'IBM Plex Mono', monospace; font-size:11px;}
-  .legend .sw-b{border-bottom:2px dotted var(--accent); font-family:'IBM Plex Mono', monospace; font-size:11px;}
+  .transcript mark.word-rep{color:#8A6D06; background:#FBF0C7;}
+  .transcript mark.sound-rep{color:#B23A2E; background:#FBE4E0;}
+  .transcript mark.interjection{color:#B15C12; background:#FBEBDA;}
+  .transcript mark.intraword{color:#B23A73; background:#FCE4EE;}
+  .transcript mark.silent-block{color:#6E4BB2; background:#EDE5FA;}
+  .transcript mark.prolongation{color:#2E7D4F; background:#E1F3E7;}
 
   .clips{
     display:grid;
@@ -155,205 +152,202 @@
     margin-bottom:8px;
   }
   .clip audio{width:100%; height:36px;}
-
-  footer{
-    margin-top:64px;
-    padding-top:24px;
-    border-top:1px solid var(--line);
-    font-size:13px;
-    color:var(--ink-soft);
-  }
 </style>
 </head>
 <body>
 <div class="wrap">
 
   <header>
-    <p class="kicker">CV-DE-Stutter — audio samples</p>
-    <h1>Listening to co-occurring stutter, phoneme by phoneme</h1>
-    <p class="dek">
-      Each row shows one utterance with two co-occurring dysfluency types, alongside
-      the clean reference transcript and three audio conditions: the original recording,
-      our synthetic fluent re-synthesis, and our synthetic dysfluent version in the
-      same speaker's voice.
-    </p>
-    <div class="links">
-      <a href="#">Code &amp; dataset</a>
-      <span class="sep">/</span>
-      <a href="#">Paper (PDF)</a>
-      <span class="sep">/</span>
-      <a href="#">Hugging Face checkpoint</a>
-    </div>
-    <p class="notice">
-      This page is part of an anonymous submission under double-blind review.
-      Model checkpoints and a full sample browser will be released on Hugging Face
-      after acceptance.
-    </p>
+    <h1>CV-DE-Stutter — Audio Demo</h1>
   </header>
-
-  <p class="legend">
-    <span><span class="sw-a">abc</span> primary dysfluency type</span>
-    <span><span class="sw-b">abc</span> co-occurring second type</span>
-  </p>
 
   <!--
     ============================================================
     HOW TO FILL THIS IN
     ============================================================
-    Duplicate a <section class="type"> block per stutter type.
-    For each, replace:
-      - the transcript line (wrap the inserted span in <mark>…</mark>)
-      - the three audio src paths (real / synthetic fluent / synthetic stuttered)
-    Keep audio files short (5–10s) and consistently loud/normalized.
+    Duplicate a <section class="type"> block per example utterance.
+    For each, set:
+      - .tags: one <span class="tag"> per dysfluency type present (flat list, any order)
+      - Reference: the clean German sentence
+      - Clean IPA: the fluent eSpeak-ng IPA, no dysfluencies
+      - Dysfluent IPA: same IPA with inserted spans wrapped in <mark>…</mark>
+      - the three audio src paths (real / synthetic fluent / synthetic dysfluent)
+    Keep audio files short (5–10s) and consistently normalized in loudness.
     Recommended folder layout next to this file:
-      demo/audio/word_repetition/real.wav
-      demo/audio/word_repetition/synthetic_fluent.wav
-      demo/audio/word_repetition/synthetic_dysfluent.wav
+      docs/audio/<example_id>/real.wav
+      docs/audio/<example_id>/synthetic_fluent.wav
+      docs/audio/<example_id>/synthetic_dysfluent.wav
     ============================================================
   -->
 
-  <section class="type" id="word-repetition">
-    <h2>Word repetition + sound repetition</h2>
-    <p class="desc">Two dysfluency types co-occurring in one utterance: a repeated word, then a repeated onset sound.</p>
+  <section class="type" id="ex-1">
+    <p class="eyebrow">Example 01</p>
+    <div class="tags">
+      <span class="tag interjection">interjection</span>
+      <span class="tag sound-rep">sound repetition</span>
+    </div>
     <div class="transcript">
-      <div class="t-row"><span class="t-label">Reference</span><span class="t-text">Das ist ein gutes Beispiel für unser System.</span></div>
-      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text">das ɪst <mark class="mark-a">ʔaɪn ʔaɪn</mark> <mark class="mark-b">ɡ-ɡ-</mark>uːtəs baɪʃpiːl fyːɐ̯ ʔʊnzɐ zʏsteːm</span></div>
+      <div class="t-row ref"><span class="t-label">Reference</span><span class="t-text">Der Kurbetrieb stützt sich auf vier Heilquellen.</span></div>
+      <div class="t-row"><span class="t-label">Clean IPA</span><span class="t-text">dɛɾ kˈʊɐbɛtɾˌiːp ʃtˈʏtst zɪç aʊf fˈiːɾ haɪlkvˈɛlən</span></div>
+      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text"><mark class="interjection">ˈɛː</mark> dɛɾ <mark class="sound-rep">k kˈʊɐ</mark> kˈʊɐbɛtɾˌiːp ʃtˈʏtst zɪç aʊf fˈiːɾ haɪlkvˈɛlən</span></div>
     </div>
     <div class="clips">
       <div class="clip">
-        <label>Real (fluent)</label>
-        <audio controls src="audio/word_repetition/real.wav"></audio>
+        <label>Original</label>
+        <audio controls src="audio/ex1_fluent.wav"></audio>
       </div>
       <div class="clip">
         <label>Synthetic fluent</label>
-        <audio controls src="audio/word_repetition/synthetic_fluent.wav"></audio>
+        <audio controls src="audio/ex1_synthetic_fluent.wav"></audio>
       </div>
       <div class="clip">
         <label>Synthetic dysfluent</label>
-        <audio controls src="audio/word_repetition/synthetic_dysfluent.wav"></audio>
+        <audio controls src="audio/ex1_dysfluent.wav"></audio>
       </div>
     </div>
   </section>
 
-  <section class="type" id="sound-repetition">
-    <h2>Sound repetition + silent block</h2>
-    <p class="desc">A repeated onset sound followed by a blocked silence later in the utterance.</p>
+  <section class="type" id="ex-2">
+    <p class="eyebrow">Example 02</p>
+    <div class="tags">
+      <span class="tag interjection">interjection</span>
+      <span class="tag sound-rep">sound repetition</span>
+      <span class="tag intraword">intra-word pause</span>
+      <span class="tag word-rep">word repetition</span>
+    </div>
     <div class="transcript">
-      <div class="t-row"><span class="t-label">Reference</span><span class="t-text">Ich weiß das nicht genau.</span></div>
-      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text">ɪç <mark class="mark-a">v-v-</mark>vaɪs das <mark class="mark-b">…</mark>nɪçt gənaʊ</span></div>
+      <div class="t-row ref"><span class="t-label">Reference</span><span class="t-text">Er war verheiratet mit Astrid Ingeborg Heggen.</span></div>
+      <div class="t-row"><span class="t-label">Clean IPA</span><span class="t-text">ɛɾ vɑːɾ fɛɾhaɪrˈɑːtət mɪt astɾˈiːt ˈɪŋeːbˌɔɾk hˈɛɡən</span></div>
+      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text"><mark class="interjection">ˈɛː</mark> ɛɾ <mark class="sound-rep">v vɑː</mark> vɑːɾ <mark class="intraword">fɛɾhaɪr(..)ˈɑːtət</mark> <mark class="word-rep">mɪt astɾˈiːt</mark> mɪt astɾˈiːt ˈɪŋeːbˌɔɾk hˈɛɡən </span></div>
     </div>
     <div class="clips">
       <div class="clip">
-        <label>Real (fluent)</label>
-        <audio controls src="audio/sound_repetition/real.wav"></audio>
+        <label>Original</label>
+        <audio controls src="audio/ex2_fluent.wav"></audio>
       </div>
       <div class="clip">
         <label>Synthetic fluent</label>
-        <audio controls src="audio/sound_repetition/synthetic_fluent.wav"></audio>
+        <audio controls src="audio/ex2_synthetic_fluent.wav"></audio>
       </div>
       <div class="clip">
         <label>Synthetic dysfluent</label>
-        <audio controls src="audio/sound_repetition/synthetic_dysfluent.wav"></audio>
+        <audio controls src="audio/ex2_dysfluent.wav"></audio>
       </div>
     </div>
   </section>
 
-  <section class="type" id="interjection">
-    <h2>Interjection + prolongation</h2>
-    <p class="desc">A filler token inserted mid-utterance, followed by a stretched phoneme.</p>
+  <section class="type" id="ex-3">
+    <p class="eyebrow">Example 03</p>
+    <div class="tags">
+      <span class="tag prolongation">prolongation</span>
+      <span class="tag silent-block">silent block</span>
+      <span class="tag intraword">intra-word pause</span>
+    </div>
     <div class="transcript">
-      <div class="t-row"><span class="t-label">Reference</span><span class="t-text">Wir fahren morgen nach Berlin.</span></div>
-      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text">vɪɐ̯ fɑːɐ̯n <mark class="mark-a">ɛːə</mark> <mark class="mark-b">mːː</mark>oːɐ̯gn̩ nax bɛɐ̯liːn</span></div>
+      <div class="t-row ref"><span class="t-label">Reference</span><span class="t-text">Ich sage das ohne jede Freude.</span></div>
+      <div class="t-row"><span class="t-label">Clean IPA</span><span class="t-text">ɪç zˈɑːɡə das ˈoːnə jˈeːdə frˈɔødə</span></div>
+      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text"><mark class="prolongation">ɪ</mark>ç zˈɑːɡə <mark class="silent-block">(...)</mark> das <mark class="intraword">ˈoː(..)nə</mark> jˈeːdə frˈɔødə</span></div> 
     </div>
     <div class="clips">
       <div class="clip">
-        <label>Real (fluent)</label>
-        <audio controls src="audio/interjection/real.wav"></audio>
+        <label>Original</label>
+        <audio controls src="audio/ex3_fluent.wav"></audio>
       </div>
       <div class="clip">
         <label>Synthetic fluent</label>
-        <audio controls src="audio/interjection/synthetic_fluent.wav"></audio>
+        <audio controls src="audio/ex3_synthetic_fluent.wav"></audio>
       </div>
       <div class="clip">
         <label>Synthetic dysfluent</label>
-        <audio controls src="audio/interjection/synthetic_dysfluent.wav"></audio>
+        <audio controls src="audio/ex3_dysfluent.wav"></audio>
       </div>
     </div>
   </section>
 
-  <section class="type" id="intra-word-pause">
-    <h2>Intra-word pause + word repetition</h2>
-    <p class="desc">A brief silent gap inside a word boundary, followed by a repeated word later in the utterance.</p>
+  <section class="type" id="ex-4">
+    <p class="eyebrow">Example 04</p>
+    <div class="tags">
+      <span class="tag prolongation">prolongation</span>
+      <span class="tag silent-block">silent block</span>
+      <span class="tag intraword">intra-word pause</span>
+    </div>
     <div class="transcript">
-      <div class="t-row"><span class="t-label">Reference</span><span class="t-text">Das Gewitter zieht auf.</span></div>
-      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text">das <mark class="mark-a">ɡə‥</mark>vɪtɐ <mark class="mark-b">tsiːt tsiːt</mark> ʔaʊf</span></div>
+      <div class="t-row ref"><span class="t-label">Reference</span><span class="t-text">Pluto zählt nicht mehr zu den Planeten.</span></div>
+      <div class="t-row"><span class="t-label">Clean IPA</span><span class="t-text">plˈuːtoː tsˈɛːlt nˈɪçt mˌeːɾ tsuː deːn planˈeːtən</span></div>
+      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text">p<mark class="prolongation">l</mark>ˈuːtoː tsˈɛːlt <mark class="silent-block">(...)</mark> nˈɪçt mˌeːɾ tsuː <mark class="intraword">d (..) eːn</mark> pl<mark class="prolongation">a</mark>nˈeːtən</span></div>
     </div>
     <div class="clips">
       <div class="clip">
-        <label>Real (fluent)</label>
-        <audio controls src="audio/intra_word_pause/real.wav"></audio>
+        <label>Original</label>
+        <audio controls src="audio/ex4_fluent.wav"></audio>
       </div>
       <div class="clip">
         <label>Synthetic fluent</label>
-        <audio controls src="audio/intra_word_pause/synthetic_fluent.wav"></audio>
+        <audio controls src="audio/ex4_synthetic_fluent.wav"></audio>
       </div>
       <div class="clip">
         <label>Synthetic dysfluent</label>
-        <audio controls src="audio/intra_word_pause/synthetic_dysfluent.wav"></audio>
+        <audio controls src="audio/ex4_dysfluent.wav"></audio>
       </div>
     </div>
   </section>
 
-  <section class="type" id="silent-block">
-    <h2>Silent block + interjection</h2>
-    <p class="desc">A blocked onset silence, followed by a filler token later in the same utterance.</p>
+  <section class="type" id="ex-5">
+    <p class="eyebrow">Example 05</p>
+    <div class="tags">
+      <span class="tag intraword">intra-word pause</span>
+      <span class="tag interjection">interjection</span>
+      <span class="tag word-rep">word repetition</span>
+      <span class="tag sound-rep">sound repetition</span>
+    </div>
     <div class="transcript">
-      <div class="t-row"><span class="t-label">Reference</span><span class="t-text">Er hat die Tür geöffnet.</span></div>
-      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text">eːɐ̯ <mark class="mark-a">…</mark>hat di tyːɐ̯ <mark class="mark-b">ɛːə</mark>ɡeøːfnət</span></div>
+      <div class="t-row ref"><span class="t-label">Reference</span><span class="t-text">Bleiben Sie bitte nicht hier stehen!</span></div>
+      <div class="t-row"><span class="t-label">Clean IPA</span><span class="t-text">blˈaɪbən ziː bˈɪtə nˈɪçt hˈiːɾ ʃtˈeːən</span></div>
+      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text"><mark class="intraword">bl(..)ˈaɪbən</mark> ziː <mark class="interjection">hˈəm</mark> bˈɪtə <mark class="word-rep">nˈɪçt</mark> nˈɪçt <mark class="sound-rep">h hˈiː</mark> hˈiːɾ ʃtˈeːən</span></div>
     </div>
     <div class="clips">
       <div class="clip">
-        <label>Real (fluent)</label>
-        <audio controls src="audio/silent_block/real.wav"></audio>
+        <label>Original</label>
+        <audio controls src="audio/ex5_fluent.wav"></audio>
       </div>
       <div class="clip">
         <label>Synthetic fluent</label>
-        <audio controls src="audio/silent_block/synthetic_fluent.wav"></audio>
+        <audio controls src="audio/ex5_synthetic_fluent.wav"></audio>
       </div>
       <div class="clip">
         <label>Synthetic dysfluent</label>
-        <audio controls src="audio/silent_block/synthetic_dysfluent.wav"></audio>
+        <audio controls src="audio/ex5_dysfluent.wav"></audio>
       </div>
     </div>
   </section>
 
-  <section class="type" id="prolongation">
-    <h2>Prolongation + intra-word pause</h2>
-    <p class="desc">A stretched phoneme, followed by a brief silent gap inside a later word.</p>
+  <section class="type" id="ex-6">
+    <p class="eyebrow">Example 06</p>
+    <div class="tags">
+      <span class="tag word-rep">word repetition</span>
+      <span class="tag prolongation">prolongation</span>
+      <span class="tag silent-block">silent block</span>
+    </div>
     <div class="transcript">
-      <div class="t-row"><span class="t-label">Reference</span><span class="t-text">Das sind die Ergebnisse.</span></div>
-      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text">das <mark class="mark-a">zːː</mark>ɪnt di ʔɛɐ̯ɡeː<mark class="mark-b">‥</mark>pnɪsə</span></div>
+      <div class="t-row ref"><span class="t-label">Reference</span><span class="t-text">Tina verliebt sich in den wohlhabenden Lanning Halsey.</span></div>
+      <div class="t-row"><span class="t-label">Clean IPA</span><span class="t-text">tˈiːnɑː fɛɾlˈiːpt zɪç ɪn deːn vˈoːlhˌɑːbəndən lˈanɪŋ hˈalzaɪ</span></div>
+      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text"><mark class="word-rep">tˈiːnɑː</mark> tˈiːnɑː f<mark class="prolongation">ɛ</mark>ɾlˈiːpt zɪç <mark class="intraword">(...)</mark> ɪn deːn vˈoːlhˌɑːbəndən lˈanɪŋ hˈalzaɪ</span></div>
     </div>
     <div class="clips">
       <div class="clip">
-        <label>Real (fluent)</label>
-        <audio controls src="audio/prolongation/real.wav"></audio>
+        <label>Original</label>
+        <audio controls src="audio/ex6_fluent.wav"></audio>
       </div>
       <div class="clip">
         <label>Synthetic fluent</label>
-        <audio controls src="audio/prolongation/synthetic_fluent.wav"></audio>
+        <audio controls src="audio/ex6_synthetic_fluent.wav"></audio>
       </div>
       <div class="clip">
         <label>Synthetic dysfluent</label>
-        <audio controls src="audio/prolongation/synthetic_dysfluent.wav"></audio>
+        <audio controls src="audio/ex6_dysfluent.wav"></audio>
       </div>
     </div>
   </section>
-
-  <footer>
-    Anonymous submission — ICASSP 2027. Audio samples are synthesized speech
-    generated for research purposes.
-  </footer>
 
 </div>
 </body>
