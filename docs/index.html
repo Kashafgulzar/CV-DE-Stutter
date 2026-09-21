@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CV-DE-Stutter — Audio Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F5F0;
+    --ink:#201F1D;
+    --ink-soft:#6B6862;
+    --line:#E1DCCF;
+    --accent:#2B6FB3;
+    --accent-soft:#E9F1F9;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:24px;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', system-ui, sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:64px 24px 96px;}
+
+  header{margin-bottom:56px;}
+  .kicker{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--ink-soft);
+    margin:0 0 10px;
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(32px, 5vw, 44px);
+    letter-spacing:-0.01em;
+    margin:0 0 16px;
+  }
+  .dek{
+    font-size:17px;
+    color:var(--ink-soft);
+    max-width:60ch;
+    margin:0 0 24px;
+  }
+  .links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 18px;
+    font-size:14px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+  }
+  .links a{color:var(--accent); text-decoration:none;}
+  .links a:hover{text-decoration:underline;}
+  .links span.sep{color:var(--line);}
+
+  .notice{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    background:var(--accent-soft);
+    border:1px solid var(--line);
+    padding:10px 14px;
+    border-radius:4px;
+    margin-top:20px;
+  }
+
+  section.type{
+    padding:36px 0;
+    border-top:1px solid var(--line);
+  }
+  section.type:first-of-type{border-top:1px solid var(--line);}
+
+  .type h2{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:22px;
+    margin:0 0 6px;
+  }
+  .type p.desc{
+    font-size:15px;
+    color:var(--ink-soft);
+    margin:0 0 20px;
+    max-width:62ch;
+  }
+
+  .transcript{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:14px;
+    background:#FFFFFF;
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:10px 16px;
+    margin-bottom:16px;
+  }
+  .t-row{
+    display:flex;
+    gap:14px;
+    align-items:baseline;
+    padding:6px 0;
+    overflow-x:auto;
+    white-space:nowrap;
+  }
+  .t-row + .t-row{border-top:1px solid var(--line);}
+  .t-label{
+    flex:0 0 100px;
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:12px;
+    color:var(--ink-soft);
+  }
+  .t-text{flex:1;}
+  .transcript mark.mark-a{
+    background:var(--accent-soft);
+    color:var(--accent);
+    border-radius:2px;
+    padding:0 2px;
+  }
+  .transcript mark.mark-b{
+    background:none;
+    color:var(--ink);
+    border-bottom:2px dotted var(--accent);
+    padding:0 1px;
+  }
+  .legend{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    display:flex;
+    gap:22px;
+    margin:-4px 0 28px;
+  }
+  .legend span{display:inline-flex; align-items:center; gap:7px;}
+  .legend .sw-a{background:var(--accent-soft); border-radius:2px; padding:0 6px; color:var(--accent); font-family:'IBM Plex Mono', monospace; font-size:11px;}
+  .legend .sw-b{border-bottom:2px dotted var(--accent); font-family:'IBM Plex Mono', monospace; font-size:11px;}
+
+  .clips{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:16px;
+  }
+  @media (max-width:640px){
+    .clips{grid-template-columns:1fr;}
+  }
+  .clip label{
+    display:block;
+    font-size:12.5px;
+    font-weight:500;
+    color:var(--ink-soft);
+    margin-bottom:8px;
+  }
+  .clip audio{width:100%; height:36px;}
+
+  footer{
+    margin-top:64px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="kicker">CV-DE-Stutter — audio samples</p>
+    <h1>Listening to co-occurring stutter, phoneme by phoneme</h1>
+    <p class="dek">
+      Each row shows one utterance with two co-occurring dysfluency types, alongside
+      the clean reference transcript and three audio conditions: the original recording,
+      our synthetic fluent re-synthesis, and our synthetic dysfluent version in the
+      same speaker's voice.
+    </p>
+    <div class="links">
+      <a href="#">Code &amp; dataset</a>
+      <span class="sep">/</span>
+      <a href="#">Paper (PDF)</a>
+      <span class="sep">/</span>
+      <a href="#">Hugging Face checkpoint</a>
+    </div>
+    <p class="notice">
+      This page is part of an anonymous submission under double-blind review.
+      Model checkpoints and a full sample browser will be released on Hugging Face
+      after acceptance.
+    </p>
+  </header>
+
+  <p class="legend">
+    <span><span class="sw-a">abc</span> primary dysfluency type</span>
+    <span><span class="sw-b">abc</span> co-occurring second type</span>
+  </p>
+
+  <!--
+    ============================================================
+    HOW TO FILL THIS IN
+    ============================================================
+    Duplicate a <section class="type"> block per stutter type.
+    For each, replace:
+      - the transcript line (wrap the inserted span in <mark>…</mark>)
+      - the three audio src paths (real / synthetic fluent / synthetic stuttered)
+    Keep audio files short (5–10s) and consistently loud/normalized.
+    Recommended folder layout next to this file:
+      demo/audio/word_repetition/real.wav
+      demo/audio/word_repetition/synthetic_fluent.wav
+      demo/audio/word_repetition/synthetic_dysfluent.wav
+    ============================================================
+  -->
+
+  <section class="type" id="word-repetition">
+    <h2>Word repetition + sound repetition</h2>
+    <p class="desc">Two dysfluency types co-occurring in one utterance: a repeated word, then a repeated onset sound.</p>
+    <div class="transcript">
+      <div class="t-row"><span class="t-label">Reference</span><span class="t-text">Das ist ein gutes Beispiel für unser System.</span></div>
+      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text">das ɪst <mark class="mark-a">ʔaɪn ʔaɪn</mark> <mark class="mark-b">ɡ-ɡ-</mark>uːtəs baɪʃpiːl fyːɐ̯ ʔʊnzɐ zʏsteːm</span></div>
+    </div>
+    <div class="clips">
+      <div class="clip">
+        <label>Real (fluent)</label>
+        <audio controls src="audio/word_repetition/real.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic fluent</label>
+        <audio controls src="audio/word_repetition/synthetic_fluent.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic dysfluent</label>
+        <audio controls src="audio/word_repetition/synthetic_dysfluent.wav"></audio>
+      </div>
+    </div>
+  </section>
+
+  <section class="type" id="sound-repetition">
+    <h2>Sound repetition + silent block</h2>
+    <p class="desc">A repeated onset sound followed by a blocked silence later in the utterance.</p>
+    <div class="transcript">
+      <div class="t-row"><span class="t-label">Reference</span><span class="t-text">Ich weiß das nicht genau.</span></div>
+      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text">ɪç <mark class="mark-a">v-v-</mark>vaɪs das <mark class="mark-b">…</mark>nɪçt gənaʊ</span></div>
+    </div>
+    <div class="clips">
+      <div class="clip">
+        <label>Real (fluent)</label>
+        <audio controls src="audio/sound_repetition/real.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic fluent</label>
+        <audio controls src="audio/sound_repetition/synthetic_fluent.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic dysfluent</label>
+        <audio controls src="audio/sound_repetition/synthetic_dysfluent.wav"></audio>
+      </div>
+    </div>
+  </section>
+
+  <section class="type" id="interjection">
+    <h2>Interjection + prolongation</h2>
+    <p class="desc">A filler token inserted mid-utterance, followed by a stretched phoneme.</p>
+    <div class="transcript">
+      <div class="t-row"><span class="t-label">Reference</span><span class="t-text">Wir fahren morgen nach Berlin.</span></div>
+      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text">vɪɐ̯ fɑːɐ̯n <mark class="mark-a">ɛːə</mark> <mark class="mark-b">mːː</mark>oːɐ̯gn̩ nax bɛɐ̯liːn</span></div>
+    </div>
+    <div class="clips">
+      <div class="clip">
+        <label>Real (fluent)</label>
+        <audio controls src="audio/interjection/real.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic fluent</label>
+        <audio controls src="audio/interjection/synthetic_fluent.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic dysfluent</label>
+        <audio controls src="audio/interjection/synthetic_dysfluent.wav"></audio>
+      </div>
+    </div>
+  </section>
+
+  <section class="type" id="intra-word-pause">
+    <h2>Intra-word pause + word repetition</h2>
+    <p class="desc">A brief silent gap inside a word boundary, followed by a repeated word later in the utterance.</p>
+    <div class="transcript">
+      <div class="t-row"><span class="t-label">Reference</span><span class="t-text">Das Gewitter zieht auf.</span></div>
+      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text">das <mark class="mark-a">ɡə‥</mark>vɪtɐ <mark class="mark-b">tsiːt tsiːt</mark> ʔaʊf</span></div>
+    </div>
+    <div class="clips">
+      <div class="clip">
+        <label>Real (fluent)</label>
+        <audio controls src="audio/intra_word_pause/real.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic fluent</label>
+        <audio controls src="audio/intra_word_pause/synthetic_fluent.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic dysfluent</label>
+        <audio controls src="audio/intra_word_pause/synthetic_dysfluent.wav"></audio>
+      </div>
+    </div>
+  </section>
+
+  <section class="type" id="silent-block">
+    <h2>Silent block + interjection</h2>
+    <p class="desc">A blocked onset silence, followed by a filler token later in the same utterance.</p>
+    <div class="transcript">
+      <div class="t-row"><span class="t-label">Reference</span><span class="t-text">Er hat die Tür geöffnet.</span></div>
+      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text">eːɐ̯ <mark class="mark-a">…</mark>hat di tyːɐ̯ <mark class="mark-b">ɛːə</mark>ɡeøːfnət</span></div>
+    </div>
+    <div class="clips">
+      <div class="clip">
+        <label>Real (fluent)</label>
+        <audio controls src="audio/silent_block/real.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic fluent</label>
+        <audio controls src="audio/silent_block/synthetic_fluent.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic dysfluent</label>
+        <audio controls src="audio/silent_block/synthetic_dysfluent.wav"></audio>
+      </div>
+    </div>
+  </section>
+
+  <section class="type" id="prolongation">
+    <h2>Prolongation + intra-word pause</h2>
+    <p class="desc">A stretched phoneme, followed by a brief silent gap inside a later word.</p>
+    <div class="transcript">
+      <div class="t-row"><span class="t-label">Reference</span><span class="t-text">Das sind die Ergebnisse.</span></div>
+      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text">das <mark class="mark-a">zːː</mark>ɪnt di ʔɛɐ̯ɡeː<mark class="mark-b">‥</mark>pnɪsə</span></div>
+    </div>
+    <div class="clips">
+      <div class="clip">
+        <label>Real (fluent)</label>
+        <audio controls src="audio/prolongation/real.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic fluent</label>
+        <audio controls src="audio/prolongation/synthetic_fluent.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic dysfluent</label>
+        <audio controls src="audio/prolongation/synthetic_dysfluent.wav"></audio>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Anonymous submission — ICASSP 2027. Audio samples are synthesized speech
+    generated for research purposes.
+  </footer>
+
+</div>
+</body>
+</html>
