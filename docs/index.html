@@ -1,114 +1,354 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    body {background-color: #f5f3ec}
-    p.p2 {margin: 0.0px 0.0px 10.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #58554f; -webkit-text-stroke: #58554f}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.5px 'Helvetica Neue'; color: #a04810; -webkit-text-stroke: #a04810; background-color: #fae6d1}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.5px 'Helvetica Neue'; color: #a12723; -webkit-text-stroke: #a12723; background-color: #f9ddd9}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #58554f; -webkit-text-stroke: #58554f}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.5px 'Helvetica Neue'; color: #181816; -webkit-text-stroke: #181816}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px 'Helvetica Neue'; color: #181816; -webkit-text-stroke: #181816}
-    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.5px 'Helvetica Neue'; color: #58554f; -webkit-text-stroke: #58554f}
-    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.5px 'Helvetica Neue'; color: #a12460; -webkit-text-stroke: #a12460; background-color: #fadcea}
-    p.p10 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.5px 'Helvetica Neue'; color: #775b09; -webkit-text-stroke: #775b09; background-color: #faedbb}
-    p.p11 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.5px 'Helvetica Neue'; color: #266c3e; -webkit-text-stroke: #266c3e; background-color: #daf1e1}
-    p.p12 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.5px 'Helvetica Neue'; color: #5a33a2; -webkit-text-stroke: #5a33a2; background-color: #e8def9}
-    span.s1 {font-kerning: none}
-    span.s2 {font-kerning: none; background-color: #ffffff}
-    span.s3 {font-kerning: none; color: #a04810; background-color: #fae6d1; -webkit-text-stroke: 0px #a04810}
-    span.s4 {font-kerning: none; color: #a12723; background-color: #f9ddd9; -webkit-text-stroke: 0px #a12723}
-    span.s5 {font-kerning: none; color: #a12460; background-color: #fadcea; -webkit-text-stroke: 0px #a12460}
-    span.s6 {font-kerning: none; color: #775b09; background-color: #faedbb; -webkit-text-stroke: 0px #775b09}
-    span.s7 {font-kerning: none; color: #266c3e; background-color: #daf1e1; -webkit-text-stroke: 0px #266c3e}
-    span.s8 {font-kerning: none; color: #5a33a2; background-color: #e8def9; -webkit-text-stroke: 0px #5a33a2}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CV-DE-Stutter — Audio Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F5F0;
+    --ink:#201F1D;
+    --ink-soft:#6B6862;
+    --line:#E1DCCF;
+    --accent:#2B6FB3;
+    --accent-soft:#E9F1F9;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:24px;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', system-ui, sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:72px 24px 96px;}
+
+  header{margin-bottom:52px;}
+  .kicker{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.04em;
+    color:var(--ink-soft);
+    margin:0 0 14px;
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(30px, 4.6vw, 42px);
+    letter-spacing:-0.01em;
+    line-height:1.15;
+    margin:0 0 16px;
+  }
+  .rule{
+    width:44px;
+    height:3px;
+    background:var(--accent);
+    border:none;
+    margin:0 0 20px;
+  }
+  .dek{
+    font-size:16px;
+    color:var(--ink-soft);
+    max-width:58ch;
+    margin:0;
+  }
+
+  section.type{
+    padding:40px 0;
+    border-top:1px solid var(--line);
+  }
+  section.type:first-of-type{border-top:1px solid var(--line);}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    letter-spacing:0.03em;
+    margin:0 0 10px;
+  }
+
+  .tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:0 0 14px;
+  }
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    border-radius:999px;
+    padding:4px 11px;
+    line-height:1;
+  }
+  .tag.word-rep{color:#8A6D06; background:#FBF0C7;}
+  .tag.sound-rep{color:#B23A2E; background:#FBE4E0;}
+  .tag.interjection{color:#B15C12; background:#FBEBDA;}
+  .tag.intraword{color:#B23A73; background:#FCE4EE;}
+  .tag.silent-block{color:#6E4BB2; background:#EDE5FA;}
+  .tag.prolongation{color:#2E7D4F; background:#E1F3E7;}
+
+  .type p.desc{
+    font-size:15px;
+    color:var(--ink-soft);
+    margin:0 0 20px;
+    max-width:62ch;
+  }
+
+  .transcript{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:14px;
+    background:#FFFFFF;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:6px 16px;
+    margin-bottom:22px;
+  }
+  .t-row{
+    display:flex;
+    gap:14px;
+    align-items:baseline;
+    padding:9px 0;
+    overflow-x:auto;
+    white-space:nowrap;
+  }
+  .t-row + .t-row{border-top:1px solid var(--line);}
+  .t-label{
+    flex:0 0 96px;
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:12px;
+    color:var(--ink-soft);
+  }
+  .t-text{flex:1;}
+  .t-row.ref .t-text{font-family:'IBM Plex Sans', sans-serif; font-size:14.5px;}
+  .transcript mark{
+    border-radius:2px;
+    padding:0 2px;
+  }
+  .transcript mark.word-rep{color:#8A6D06; background:#FBF0C7;}
+  .transcript mark.sound-rep{color:#B23A2E; background:#FBE4E0;}
+  .transcript mark.interjection{color:#B15C12; background:#FBEBDA;}
+  .transcript mark.intraword{color:#B23A73; background:#FCE4EE;}
+  .transcript mark.silent-block{color:#6E4BB2; background:#EDE5FA;}
+  .transcript mark.prolongation{color:#2E7D4F; background:#E1F3E7;}
+
+  .clips{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:16px;
+  }
+  @media (max-width:640px){
+    .clips{grid-template-columns:1fr;}
+  }
+  .clip label{
+    display:block;
+    font-size:12.5px;
+    font-weight:500;
+    color:var(--ink-soft);
+    margin-bottom:8px;
+  }
+  .clip audio{width:100%; height:36px;}
+</style>
 </head>
 <body>
-<h1 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 36.8px 'Helvetica Neue'; color: #181816; -webkit-text-stroke: #181816"><span class="s1">CV-DE-Stutter — Audio Demo</span></h1>
-<p class="p2"><span class="s1">Example 01</span></p>
-<p class="p3"><span class="s1">interjection</span></p>
-<p class="p4"><span class="s1">sound repetition</span></p>
-<p class="p5"><span class="s2">Reference</span></p>
-<p class="p6"><span class="s2">Der Kurbetrieb stützt sich auf vier Heilquellen.</span></p>
-<p class="p5"><span class="s2">Clean IPA</span></p>
-<p class="p7"><span class="s2">dɛɾ kˈʊɐbɛtɾˌiːp ʃtˈʏtst zɪç aʊf fˈiːɾ haɪlkvˈɛlən</span></p>
-<p class="p5"><span class="s2">Dysfluent IPA</span></p>
-<p class="p7"><span class="s3">ˈɛː</span><span class="s2"> dɛɾ </span><span class="s4">k kˈʊɐ</span><span class="s2"> kˈʊɐbɛtɾˌiːp ʃtˈʏtst zɪç aʊf fˈiːɾ haɪlkvˈɛlən</span></p>
-<p class="p8"><span class="s1">Original</span></p>
-<p class="p8"><span class="s1">Synthetic fluent</span></p>
-<p class="p8"><span class="s1">Synthetic stuttered</span></p>
-<p class="p2"><span class="s1">Example 02</span></p>
-<p class="p3"><span class="s1">interjection</span></p>
-<p class="p4"><span class="s1">sound repetition</span></p>
-<p class="p9"><span class="s1">intra-word pause</span></p>
-<p class="p10"><span class="s1">word repetition</span></p>
-<p class="p5"><span class="s2">Reference</span></p>
-<p class="p6"><span class="s2">Er war verheiratet mit Astrid Ingeborg Heggen.</span></p>
-<p class="p5"><span class="s2">Clean IPA</span></p>
-<p class="p7"><span class="s2">ɛɾ vɑːɾ fɛɾhaɪrˈɑːtət mɪt astɾˈiːt ˈɪŋeːbˌɔɾk hˈɛɡən</span></p>
-<p class="p5"><span class="s2">Dysfluent IPA</span></p>
-<p class="p7"><span class="s3">ˈɛː</span><span class="s2"> ɛɾ </span><span class="s4">v vɑː</span><span class="s2"> vɑːɾ </span><span class="s5">fɛɾhaɪr(..)ˈɑːtət</span><span class="s2"> </span><span class="s6">mɪt astɾˈiːt</span><span class="s2"> mɪt astɾˈiːt ˈɪŋeːbˌɔɾk hˈɛɡən</span></p>
-<p class="p8"><span class="s1">Original</span></p>
-<p class="p8"><span class="s1">Synthetic fluent</span></p>
-<p class="p8"><span class="s1">Synthetic stuttered</span></p>
-<p class="p2"><span class="s1">Example 03</span></p>
-<p class="p11"><span class="s1">prolongation</span></p>
-<p class="p12"><span class="s1">silent block</span></p>
-<p class="p9"><span class="s1">intra-word pause</span></p>
-<p class="p5"><span class="s2">Reference</span></p>
-<p class="p6"><span class="s2">Ich sage das ohne jede Freude.</span></p>
-<p class="p5"><span class="s2">Clean IPA</span></p>
-<p class="p7"><span class="s2">ɪç zˈɑːɡə das ˈoːnə jˈeːdə frˈɔødə</span></p>
-<p class="p5"><span class="s2">Dysfluent IPA</span></p>
-<p class="p7"><span class="s7">ɪ</span><span class="s2">ç zˈɑːɡə </span><span class="s8">(...)</span><span class="s2"> das </span><span class="s5">ˈoː(..)nə</span><span class="s2"> jˈeːdə frˈɔødə</span></p>
-<p class="p8"><span class="s1">Original</span></p>
-<p class="p8"><span class="s1">Synthetic fluent</span></p>
-<p class="p8"><span class="s1">Synthetic stuttered</span></p>
-<p class="p2"><span class="s1">Example 04</span></p>
-<p class="p11"><span class="s1">prolongation</span></p>
-<p class="p12"><span class="s1">silent block</span></p>
-<p class="p9"><span class="s1">intra-word pause</span></p>
-<p class="p5"><span class="s2">Reference</span></p>
-<p class="p6"><span class="s2">Pluto zählt nicht mehr zu den Planeten.</span></p>
-<p class="p5"><span class="s2">Clean IPA</span></p>
-<p class="p7"><span class="s2">plˈuːtoː tsˈɛːlt nˈɪçt mˌeːɾ tsuː deːn planˈeːtən</span></p>
-<p class="p5"><span class="s2">Dysfluent IPA</span></p>
-<p class="p7"><span class="s2">p</span><span class="s7">l</span><span class="s2">ˈuːtoː tsˈɛːlt </span><span class="s8">(...)</span><span class="s2"> nˈɪçt mˌeːɾ tsuː </span><span class="s5">d (..) eːn</span><span class="s2"> pl</span><span class="s7">a</span><span class="s2">nˈeːtən</span></p>
-<p class="p8"><span class="s1">Original</span></p>
-<p class="p8"><span class="s1">Synthetic fluent</span></p>
-<p class="p8"><span class="s1">Synthetic stuttered</span></p>
-<p class="p2"><span class="s1">Example 05</span></p>
-<p class="p9"><span class="s1">intra-word pause</span></p>
-<p class="p3"><span class="s1">interjection</span></p>
-<p class="p10"><span class="s1">word repetition</span></p>
-<p class="p4"><span class="s1">sound repetition</span></p>
-<p class="p5"><span class="s2">Reference</span></p>
-<p class="p6"><span class="s2">Bleiben Sie bitte nicht hier stehen!</span></p>
-<p class="p5"><span class="s2">Clean IPA</span></p>
-<p class="p7"><span class="s2">blˈaɪbən ziː bˈɪtə nˈɪçt hˈiːɾ ʃtˈeːən</span></p>
-<p class="p5"><span class="s2">Dysfluent IPA</span></p>
-<p class="p7"><span class="s5">bl(..)ˈaɪbən</span><span class="s2"> ziː </span><span class="s3">hˈəm</span><span class="s2"> bˈɪtə </span><span class="s6">nˈɪçt</span><span class="s2"> nˈɪçt </span><span class="s4">h hˈiː</span><span class="s2"> hˈiːɾ ʃtˈeːən</span></p>
-<p class="p8"><span class="s1">Original</span></p>
-<p class="p8"><span class="s1">Synthetic fluent</span></p>
-<p class="p8"><span class="s1">Synthetic stuttered</span></p>
-<p class="p2"><span class="s1">Example 06</span></p>
-<p class="p10"><span class="s1">word repetition</span></p>
-<p class="p11"><span class="s1">prolongation</span></p>
-<p class="p12"><span class="s1">silent block</span></p>
-<p class="p5"><span class="s2">Reference</span></p>
-<p class="p6"><span class="s2">Tina verliebt sich in den wohlhabenden Lanning Halsey.</span></p>
-<p class="p5"><span class="s2">Clean IPA</span></p>
-<p class="p7"><span class="s2">tˈiːnɑː fɛɾlˈiːpt zɪç ɪn deːn vˈoːlhˌɑːbəndən lˈanɪŋ hˈalzaɪ</span></p>
-<p class="p5"><span class="s2">Dysfluent IPA</span></p>
-<p class="p7"><span class="s6">tˈiːnɑː</span><span class="s2"> tˈiːnɑː f</span><span class="s7">ɛ</span><span class="s2">ɾlˈiːpt zɪç </span><span class="s5">(...)</span><span class="s2"> ɪn deːn vˈoːlhˌɑːbəndən lˈanɪŋ hˈalzaɪ</span></p>
-<p class="p8"><span class="s1">Original</span></p>
-<p class="p8"><span class="s1">Synthetic fluent</span></p>
-<p class="p8"><span class="s1">Synthetic stuttered</span></p>
+<div class="wrap">
+
+  <header>
+    <h1>CV-DE-Stutter — Audio Demo</h1>
+  </header>
+
+  <!--
+    ============================================================
+    HOW TO FILL THIS IN
+    ============================================================
+    Duplicate a <section class="type"> block per example utterance.
+    For each, set:
+      - .tags: one <span class="tag"> per dysfluency type present (flat list, any order)
+      - Reference: the clean German sentence
+      - Clean IPA: the fluent eSpeak-ng IPA, no dysfluencies
+      - Dysfluent IPA: same IPA with inserted spans wrapped in <mark>…</mark>
+      - the three audio src paths (real / synthetic fluent / synthetic dysfluent)
+    Keep audio files short (5–10s) and consistently normalized in loudness.
+    Recommended folder layout next to this file:
+      docs/audio/<example_id>/real.wav
+      docs/audio/<example_id>/synthetic_fluent.wav
+      docs/audio/<example_id>/synthetic_dysfluent.wav
+    ============================================================
+  -->
+
+  <section class="type" id="ex-1">
+    <p class="eyebrow">Example 01</p>
+    <div class="tags">
+      <span class="tag interjection">interjection</span>
+      <span class="tag sound-rep">sound repetition</span>
+    </div>
+    <div class="transcript">
+      <div class="t-row ref"><span class="t-label">Reference</span><span class="t-text">Der Kurbetrieb stützt sich auf vier Heilquellen.</span></div>
+      <div class="t-row"><span class="t-label">Clean IPA</span><span class="t-text">dɛɾ kˈʊɐbɛtɾˌiːp ʃtˈʏtst zɪç aʊf fˈiːɾ haɪlkvˈɛlən</span></div>
+      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text"><mark class="interjection">ˈɛː</mark> dɛɾ <mark class="sound-rep">k kˈʊɐ</mark> kˈʊɐbɛtɾˌiːp ʃtˈʏtst zɪç aʊf fˈiːɾ haɪlkvˈɛlən</span></div>
+    </div>
+    <div class="clips">
+      <div class="clip">
+        <label>Original</label>
+        <audio controls src="audio/ex1_fluent.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic fluent</label>
+        <audio controls src="audio/ex1_synthetic_fluent.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic stuttered</label>
+        <audio controls src="audio/ex1_dysfluent.wav"></audio>
+      </div>
+    </div>
+  </section>
+
+  <section class="type" id="ex-2">
+    <p class="eyebrow">Example 02</p>
+    <div class="tags">
+      <span class="tag interjection">interjection</span>
+      <span class="tag sound-rep">sound repetition</span>
+      <span class="tag intraword">intra-word pause</span>
+      <span class="tag word-rep">word repetition</span>
+    </div>
+    <div class="transcript">
+      <div class="t-row ref"><span class="t-label">Reference</span><span class="t-text">Er war verheiratet mit Astrid Ingeborg Heggen.</span></div>
+      <div class="t-row"><span class="t-label">Clean IPA</span><span class="t-text">ɛɾ vɑːɾ fɛɾhaɪrˈɑːtət mɪt astɾˈiːt ˈɪŋeːbˌɔɾk hˈɛɡən</span></div>
+      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text"><mark class="interjection">ˈɛː</mark> ɛɾ <mark class="sound-rep">v vɑː</mark> vɑːɾ <mark class="intraword">fɛɾhaɪr(..)ˈɑːtət</mark> <mark class="word-rep">mɪt astɾˈiːt</mark> mɪt astɾˈiːt ˈɪŋeːbˌɔɾk hˈɛɡən </span></div>
+    </div>
+    <div class="clips">
+      <div class="clip">
+        <label>Original</label>
+        <audio controls src="audio/ex2_fluent.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic fluent</label>
+        <audio controls src="audio/ex2_synthetic_fluent.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic stuttered</label>
+        <audio controls src="audio/ex2_dysfluent.wav"></audio>
+      </div>
+    </div>
+  </section>
+
+  <section class="type" id="ex-3">
+    <p class="eyebrow">Example 03</p>
+    <div class="tags">
+      <span class="tag prolongation">prolongation</span>
+      <span class="tag silent-block">silent block</span>
+      <span class="tag intraword">intra-word pause</span>
+    </div>
+    <div class="transcript">
+      <div class="t-row ref"><span class="t-label">Reference</span><span class="t-text">Ich sage das ohne jede Freude.</span></div>
+      <div class="t-row"><span class="t-label">Clean IPA</span><span class="t-text">ɪç zˈɑːɡə das ˈoːnə jˈeːdə frˈɔødə</span></div>
+      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text"><mark class="prolongation">ɪ</mark>ç zˈɑːɡə <mark class="silent-block">(...)</mark> das <mark class="intraword">ˈoː(..)nə</mark> jˈeːdə frˈɔødə</span></div> 
+    </div>
+    <div class="clips">
+      <div class="clip">
+        <label>Original</label>
+        <audio controls src="audio/ex3_fluent.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic fluent</label>
+        <audio controls src="audio/ex3_synthetic_fluent.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic stuttered</label>
+        <audio controls src="audio/ex3_dysfluent.wav"></audio>
+      </div>
+    </div>
+  </section>
+
+  <section class="type" id="ex-4">
+    <p class="eyebrow">Example 04</p>
+    <div class="tags">
+      <span class="tag prolongation">prolongation</span>
+      <span class="tag silent-block">silent block</span>
+      <span class="tag intraword">intra-word pause</span>
+    </div>
+    <div class="transcript">
+      <div class="t-row ref"><span class="t-label">Reference</span><span class="t-text">Pluto zählt nicht mehr zu den Planeten.</span></div>
+      <div class="t-row"><span class="t-label">Clean IPA</span><span class="t-text">plˈuːtoː tsˈɛːlt nˈɪçt mˌeːɾ tsuː deːn planˈeːtən</span></div>
+      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text">p<mark class="prolongation">l</mark>ˈuːtoː tsˈɛːlt <mark class="silent-block">(...)</mark> nˈɪçt mˌeːɾ tsuː <mark class="intraword">d (..) eːn</mark> pl<mark class="prolongation">a</mark>nˈeːtən</span></div>
+    </div>
+    <div class="clips">
+      <div class="clip">
+        <label>Original</label>
+        <audio controls src="audio/ex4_fluent.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic fluent</label>
+        <audio controls src="audio/ex4_synthetic_fluent.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic stuttered</label>
+        <audio controls src="audio/ex4_dysfluent.wav"></audio>
+      </div>
+    </div>
+  </section>
+
+  <section class="type" id="ex-5">
+    <p class="eyebrow">Example 05</p>
+    <div class="tags">
+      <span class="tag intraword">intra-word pause</span>
+      <span class="tag interjection">interjection</span>
+      <span class="tag word-rep">word repetition</span>
+      <span class="tag sound-rep">sound repetition</span>
+    </div>
+    <div class="transcript">
+      <div class="t-row ref"><span class="t-label">Reference</span><span class="t-text">Bleiben Sie bitte nicht hier stehen!</span></div>
+      <div class="t-row"><span class="t-label">Clean IPA</span><span class="t-text">blˈaɪbən ziː bˈɪtə nˈɪçt hˈiːɾ ʃtˈeːən</span></div>
+      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text"><mark class="intraword">bl(..)ˈaɪbən</mark> ziː <mark class="interjection">hˈəm</mark> bˈɪtə <mark class="word-rep">nˈɪçt</mark> nˈɪçt <mark class="sound-rep">h hˈiː</mark> hˈiːɾ ʃtˈeːən</span></div>
+    </div>
+    <div class="clips">
+      <div class="clip">
+        <label>Original</label>
+        <audio controls src="audio/ex5_fluent.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic fluent</label>
+        <audio controls src="audio/ex5_synthetic_fluent.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic stuttered</label>
+        <audio controls src="audio/ex5_dysfluent.wav"></audio>
+      </div>
+    </div>
+  </section>
+
+  <section class="type" id="ex-6">
+    <p class="eyebrow">Example 06</p>
+    <div class="tags">
+      <span class="tag word-rep">word repetition</span>
+      <span class="tag prolongation">prolongation</span>
+      <span class="tag silent-block">silent block</span>
+    </div>
+    <div class="transcript">
+      <div class="t-row ref"><span class="t-label">Reference</span><span class="t-text">Tina verliebt sich in den wohlhabenden Lanning Halsey.</span></div>
+      <div class="t-row"><span class="t-label">Clean IPA</span><span class="t-text">tˈiːnɑː fɛɾlˈiːpt zɪç ɪn deːn vˈoːlhˌɑːbəndən lˈanɪŋ hˈalzaɪ</span></div>
+      <div class="t-row"><span class="t-label">Dysfluent IPA</span><span class="t-text"><mark class="word-rep">tˈiːnɑː</mark> tˈiːnɑː f<mark class="prolongation">ɛ</mark>ɾlˈiːpt zɪç <mark class="intraword">(...)</mark> ɪn deːn vˈoːlhˌɑːbəndən lˈanɪŋ hˈalzaɪ</span></div>
+    </div>
+    <div class="clips">
+      <div class="clip">
+        <label>Original</label>
+        <audio controls src="audio/ex6_fluent.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic fluent</label>
+        <audio controls src="audio/ex6_synthetic_fluent.wav"></audio>
+      </div>
+      <div class="clip">
+        <label>Synthetic stuttered</label>
+        <audio controls src="audio/ex6_dysfluent.wav"></audio>
+      </div>
+    </div>
+  </section>
+
+</div>
 </body>
 </html>
